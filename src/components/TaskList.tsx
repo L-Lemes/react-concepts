@@ -16,7 +16,7 @@ export function TaskList() {
 
   function handleCreateNewTask() {
     if(!newTaskTitle) {
-      throw new Error('VTMNC Ai')
+      return 
     }
 
     const newTask = {
@@ -25,23 +25,23 @@ export function TaskList() {
       isComplete: false
     }
 
-    setTasks(fuck => [...fuck, newTask])
+    setTasks(tasks => [...tasks, newTask])
     setNewTaskTitle('')
   }
 
   function handleToggleTaskCompletion(id: number) {
-    const taask = tasks.map(task => task.id === id ? {
+    const toggledTask = tasks.map(task => task.id === id ? {
       ...task,
       isComplete: !task.isComplete
     } : task)
 
-    setTasks(taask)
+    setTasks(toggledTask)
   }
 
   function handleRemoveTask(id: number) {
-    const task = tasks.filter(task => task.id !== id)
+    const deletedTask = tasks.filter(task => task.id !== id)
 
-    setTasks(task)
+    setTasks(deletedTask)
   }
 
   return (
